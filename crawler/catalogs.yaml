@@ -1,0 +1,22 @@
+- name: example_gov_portal
+  datasets:
+    - title: Traffic Data 2024
+      resources:
+        - url: https://data.example.gov/traffic_2024.csv
+          format: CSV
+        - url: https://data.example.gov/traffic_2024.json
+          format: JSON
+    
+    - title: Weather Sensors
+      resources:
+        - url: https://data.example.gov/weather_jan.parquet
+          format: PARQUET
+        - url: https://data.example.gov/weather_report.pdf
+          format: PDF
+
+- name: open_data_city
+  datasets:
+    - title: Public Transport Schedule
+      resources:
+        - url: https://opendata.city.gov/transit.json
+          format: JSON
