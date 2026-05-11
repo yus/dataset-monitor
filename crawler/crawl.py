@@ -153,8 +153,9 @@ async def sample_resource(client, url, fmt):
 
 # --- Database Operations ---
 async def init_db(pool):
-    """Ensure tables and view exist."""
+    """Ensure tables and view exist, handling prior partial runs cleanly."""
     async with pool.acquire() as conn:
+        # Create tables (safe to run repeatedly)
         await conn.execute("""
             CREATE TABLE IF NOT EXISTS datasets (
                 id              BIGSERIAL PRIMARY KEY,
@@ -166,7 +167,9 @@ async def init_db(pool):
                 declared_format TEXT,
                 UNIQUE (source_catalog, dataset_id, resource_url)
             );
-            
+        """)
+        
+        await conn.execute("""
             CREATE TABLE IF NOT EXISTS crawl_snapshots (
                 id              BIGSERIAL PRIMARY KEY,
                 dataset_id      BIGINT REFERENCES datasets(id) ON DELETE CASCADE,
@@ -186,8 +189,8 @@ async def init_db(pool):
             );
         """)
         
-        # Drop and recreate materialized view
-        await conn.execute("DROP MATERIALIZED VIEW IF EXISTS dashboard_latest CASCADE;")
+        # Recreate materialized view safely
+        await conn.execute("DROP MATERIALIZED VIEW IF EXISTS dashboard_latest;")
         await conn.execute("""
             CREATE MATERIALIZED VIEW dashboard_latest AS
             SELECT DISTINCT ON (d.id)
@@ -211,7 +214,11 @@ async def init_db(pool):
             JOIN crawl_snapshots s ON s.dataset_id = d.id
             ORDER BY d.id, s.checked_at DESC;
         """)
-        await conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS ON dashboard_latest (dataset_id);")
+        
+        # Create unique index with explicit name
+        await conn.execute(
+            "CREATE UNIQUE INDEX idx_dashboard_latest_dataset_id ON dashboard_latest (dataset_id);"
+        )
 
 async def upsert_dataset(pool, catalog_name, dataset_title, resource_url, fmt):
     """Insert or update dataset, return its ID."""
