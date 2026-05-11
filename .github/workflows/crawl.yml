@@ -20,5 +20,5 @@ jobs:
       
       - name: Run crawler
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.SUPABASE_POOLER_URL }}
         run: python crawler/crawl.py
