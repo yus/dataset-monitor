@@ -1,0 +1,4 @@
+httpx
+cchardet
+pyyaml
+psycopg2-binary
