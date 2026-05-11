@@ -1,22 +1,30 @@
-- name: example_gov_portal
+- name: data_gov_usa
   datasets:
-    - title: Traffic Data 2024
+    - title: "Electric Vehicle Population Data"
       resources:
-        - url: https://data.example.gov/traffic_2024.csv
+        - url: "https://data.wa.gov/api/views/f6w7-q2d2/rows.csv"
           format: CSV
-        - url: https://data.example.gov/traffic_2024.json
+        - url: "https://data.wa.gov/api/views/f6w7-q2d2/rows.json"
           format: JSON
     
-    - title: Weather Sensors
+    - title: "Air Quality Measures"
       resources:
-        - url: https://data.example.gov/weather_jan.parquet
-          format: PARQUET
-        - url: https://data.example.gov/weather_report.pdf
-          format: PDF
-
-- name: open_data_city
-  datasets:
-    - title: Public Transport Schedule
+        - url: "https://data.cityofnewyork.us/api/views/c3uy-2e5n/rows.csv"
+          format: CSV
+    
+    - title: "Building Permits"
       resources:
-        - url: https://opendata.city.gov/transit.json
+        - url: "https://data.cityofchicago.org/api/views/ydr8-5dax/rows.json"
           format: JSON
+
+- name: data_gov_uk
+  datasets:
+    - title: "Road Safety Data"
+      resources:
+        - url: "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-2023.csv"
+          format: CSV
+    
+    - title: "UK House Price Index"
+      resources:
+        - url: "https://landregistry.data.gov.uk/app/root/doc/hpi/hpi_data.csv"
+          format: CSV
