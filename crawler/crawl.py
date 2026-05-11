@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
-import cchardet
+import charset_normalizer
 import asyncpg
 import yaml
 
@@ -98,7 +98,7 @@ async def sample_resource(client, url, fmt):
         
         # Detect encoding
         try:
-            detected = cchardet.detect(raw)
+            detected = charset_normalizer.detect(raw)
             result["encoding"] = detected.get("encoding", "unknown")
         except Exception:
             result["encoding"] = "unknown"
