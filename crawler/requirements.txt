@@ -1,5 +1,5 @@
 httpx
-cchardet
+charset-normalizer
 pyyaml
 psycopg2-binary
 asyncpg
