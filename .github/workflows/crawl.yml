@@ -1,9 +1,12 @@
-name: Crawl Datasets Every 6 Hours
+name: Crawl Datasets
 
 on:
   schedule:
     - cron: '0 */6 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   crawl:
@@ -20,5 +23,5 @@ jobs:
       
       - name: Run crawler
         env:
-          DATABASE_URL: ${{ secrets.SUPABASE_POOLER_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: python crawler/crawl.py
