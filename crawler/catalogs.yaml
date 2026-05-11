@@ -6,36 +6,95 @@
           format: CSV
         - url: "https://data.wa.gov/api/views/f6w7-q2d2/rows.json"
           format: JSON
-    
-    - title: "Air Quality Measures"
+
+    - title: "FBI Crime Data API"
       resources:
-        - url: "https://data.cityofnewyork.us/api/views/c3uy-2e5n/rows.csv"
-          format: CSV
-    
-    - title: "Building Permits"
-      resources:
-        - url: "https://data.cityofchicago.org/api/views/ydr8-5dax/rows.json"
+        - url: "https://api.usa.gov/crime/fbi/cde/arrest/state/CA/all?from=2015&to=2020&API_KEY=iiHnOKfno2Mgkt5AynpvPpUQTEyxE77jo1RU8PIv"
           format: JSON
 
-- name: data_gov_uk
-  datasets:
-    - title: "Road Safety Data"
-      resources:
-        - url: "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-2023.csv"
-          format: CSV
-    
-    - title: "UK House Price Index"
-      resources:
-        - url: "https://landregistry.data.gov.uk/app/root/doc/hpi/hpi_data.csv"
-          format: CSV
-
-- name: data_gov_federal
-  datasets:
-    - title: "FDA Food Recalls"
-      resources:
-        - url: "https://www.fda.gov/files/food/published/Food-Recalls-2024.csv"
-          format: CSV
     - title: "NASA Exoplanet Archive"
       resources:
         - url: "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+pscomppars&format=csv"
           format: CSV
+
+    - title: "Census Bureau Population Estimates"
+      resources:
+        - url: "https://www2.census.gov/programs-surveys/popest/datasets/2020-2023/cities/totals/sub-est2023.csv"
+          format: CSV
+
+- name: data_gov_uk
+  datasets:
+    - title: "UK House Price Index"
+      resources:
+        - url: "http://prod2.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2024.csv"
+          format: CSV
+
+    - title: "ONS Employment Rate"
+      resources:
+        - url: "https://api.ons.gov.uk/timeseries/MGRZ/dataset/LMS/data"
+          format: JSON
+    
+    - title: "Environment Agency Rainfall Data"
+      resources:
+        - url: "https://environment.data.gov.uk/flood-monitoring/data/readings.csv?latest&parameter=rainfall"
+          format: CSV
+
+- name: world_bank
+  datasets:
+    - title: "World Bank GDP Indicators"
+      resources:
+        - url: "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&per_page=50"
+          format: JSON
+    
+    - title: "Global Population Data"
+      resources:
+        - url: "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=50"
+          format: JSON
+
+- name: european_union
+  datasets:
+    - title: "EU Air Quality Statistics"
+      resources:
+        - url: "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sdg_11_50?format=JSON&lang=en"
+          format: JSON
+    
+    - title: "Digital Economy & Society Index"
+      resources:
+        - url: "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_ci_eu_en2?format=JSON&lang=en"
+          format: JSON
+
+- name: health_data
+  datasets:
+    - title: "WHO Global Health Observatory"
+      resources:
+        - url: "https://ghoapi.azureedge.net/api/WHOSIS_000001"
+          format: JSON
+    
+    - title: "CDC Vaccine Adverse Events"
+      resources:
+        - url: "https://data.cdc.gov/api/views/bvsk-4g7t/rows.csv"
+          format: CSV
+
+    - title: "Medicare Hospital Spending"
+      resources:
+        - url: "https://data.cms.gov/provider-data/api/1/datastore/query/8889-6b9y/0/download/csv"
+          format: CSV
+
+- name: bad_and_ugly
+  datasets:
+    - title: "Broken Link Example"
+      resources:
+        - url: "https://data.gov/nonexistent-dataset-2026.csv"
+          format: CSV
+        - url: "ftp://archived-data.gov/old-backup.json"
+          format: JSON
+    
+    - title: "PDF Report (Not Machine-Readable)"
+      resources:
+        - url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          format: PDF
+    
+    - title: "HTML Page Instead of Data"
+      resources:
+        - url: "https://example.com/data-table.html"
+          format: HTML
