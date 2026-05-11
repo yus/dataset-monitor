@@ -28,3 +28,14 @@
       resources:
         - url: "https://landregistry.data.gov.uk/app/root/doc/hpi/hpi_data.csv"
           format: CSV
+
+- name: data_gov_federal
+  datasets:
+    - title: "FDA Food Recalls"
+      resources:
+        - url: "https://www.fda.gov/files/food/published/Food-Recalls-2024.csv"
+          format: CSV
+    - title: "NASA Exoplanet Archive"
+      resources:
+        - url: "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+pscomppars&format=csv"
+          format: CSV
