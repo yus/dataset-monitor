@@ -1,0 +1,88 @@
+- name: data_gov_usa
+  datasets:
+    - title: "Electric Vehicle Population (Washington State)"
+      resources:
+        - url: "https://data.wa.gov/api/views/f6w7-q2d2/rows.csv"
+          format: CSV
+        - url: "https://data.wa.gov/api/views/f6w7-q2d2/rows.json"
+          format: JSON
+
+    - title: "NYC 311 Service Requests (2024 sample)"
+      resources:
+        - url: "https://data.cityofnewyork.us/api/views/erm2-nwe9/rows.csv"
+          format: CSV
+
+    - title: "Chicago Crime Data (2024)"
+      resources:
+        - url: "https://data.cityofchicago.org/api/views/ijzp-q8t2/rows.csv"
+          format: CSV
+
+- name: data_gov_uk
+  datasets:
+    - title: "UK Price Paid Data (2024)"
+      resources:
+        - url: "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2024.csv"
+          format: CSV
+
+    - title: "UK Gov Petitions (JSON API)"
+      resources:
+        - url: "https://petition.parliament.uk/petitions.json?state=open"
+          format: JSON
+
+- name: world_bank
+  datasets:
+    - title: "World Bank GDP (all countries)"
+      resources:
+        - url: "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&per_page=50"
+          format: JSON
+
+    - title: "World Bank Population (all countries)"
+      resources:
+        - url: "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=50"
+          format: JSON
+
+- name: nasa
+  datasets:
+    - title: "NASA Exoplanet Archive (confirmed planets)"
+      resources:
+        - url: "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+pscomppars&format=csv"
+          format: CSV
+
+    - title: "Asteroids NeoWs Feed (7 days)"
+      resources:
+        - url: "https://api.nasa.gov/neo/rest/v1/feed?start_date=2026-05-01&end_date=2026-05-07&api_key=DEMO_KEY"
+          format: JSON
+
+- name: open_data_soft
+  datasets:
+    - title: "OpenDataSoft Covid-19 Global"
+      resources:
+        - url: "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/covid-19-pandemic-worldwide-data@public/records?limit=100"
+          format: JSON
+
+    - title: "French Government Open Data Portal"
+      resources:
+        - url: "https://www.data.gouv.fr/api/2/datasets?page_size=5"
+          format: JSON
+
+- name: bad_and_ugly
+  datasets:
+    - title: "Broken Link (404)"
+      resources:
+        - url: "https://data.gov/nonexistent-dataset-2026.csv"
+          format: CSV
+
+    - title: "PDF Report (not machine-readable)"
+      resources:
+        - url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+          format: PDF
+
+    - title: "HTML Page (not data)"
+      resources:
+        - url: "https://example.com/data-table.html"
+          format: HTML
+
+    - title: "FTP Archive (unsupported protocol)"
+      resources:
+        - url: "ftp://archived-data.gov/old-backup.json"
+          format: JSON
